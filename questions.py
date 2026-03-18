@@ -1,14 +1,15 @@
 import random
+import string
 
 words = [
-"python",
-"programa",
-"variable",
-"funcion",
-"bucle",
-"cadena",
-"entero",
-"lista",
+    "python",
+    "programa",
+    "variable",
+    "funcion",
+    "bucle",
+    "cadena",
+    "entero",
+    "lista",
 ]
 
 word = random.choice(words)
@@ -24,13 +25,19 @@ while attempts > 0:
             progress += letter + " "
         else:
             progress += "_ "
-    print(progress)# Verificar si el jugador ya adivinó la palabra completa
+   
+    print(progress) # Verificar si el jugador ya adivinó la palabra completa
     if "_" not in progress:
         print("¡Ganaste!")
         break
+
     print(f"Intentos restantes: {attempts}")
     print(f"Letras usadas: {', '.join(guessed)}")
     letter = input("Ingresá una letra: ")
+
+    if letter not in string.ascii_lowercase:
+        print("Entrada no válida")
+        continue
 
     if letter in guessed:
         print("Ya usaste esa letra.")
