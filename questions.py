@@ -1,7 +1,7 @@
 import random
 import string
 
-words = [
+programas = [
     "python",
     "programa",
     "variable",
@@ -11,14 +11,35 @@ words = [
     "entero",
     "lista",
 ]
+animales = [
 
-word = random.choice(words)
+    "elefante",
+    "girafa",
+    "perro",
+    "gato",
+]
+
+colores = [
+    "verde",
+    "azul",
+    "violeta",
+    "amarillo",
+]
+
+
+categorias = {"programas": programas, "animales": animales, "colores": colores }
+
+
 guessed = []
 attempts = 6
 puntaje = 0
 
 print("¡Bienvenido al Ahorcado!")
-print()
+cat = input("ingrese una categoria: animales, colores, o programas ")
+
+word = random.choice(categorias[cat])
+
+
 while attempts > 0:
 # Mostrar progreso: letras adivinadas y guiones para las que faltan
     progress = ""
@@ -39,7 +60,7 @@ while attempts > 0:
     print(f"Letras usadas: {', '.join(guessed)}")
     letter = input("Ingresá una letra: ")
 
-    if letter not in string.ascii_lowercase:
+    if letter not in string.ascii_letters or len(letter) > 1:
         print("Entrada no válida")
         continue
 
